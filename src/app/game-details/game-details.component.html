@@ -1,0 +1,77 @@
+<div class="spn" *ngIf="!game">
+  <div class="spinner-grow text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-info" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row my-5" *ngIf="game">
+    <div class="col-lg-4 col-sm-6 mt-3 position-relative">
+      <img [src]="game.thumbnail" class="rounded my-3 w-100" alt="">
+      <i class="fa-solid fa-star text-warning fw-bolder" *ngIf="favList.includes(game.id)||checkAdd"></i>
+      <div>
+        <button [class]="keyValue=='Add to Fav'?'btn-info':'btn-outline-danger'" class="fw-bolder d-inline-block btn btn-sm px-2 py-2 rounded " (click)="addToFav(game.id)">{{keyValue}}</button>
+        <a [href]="game.game_url" target="_blank"><button
+            class="d-inline-block w-40 btn btn-primary  btn-sm py-2  rounded float-end">Play Now <i
+              class="fa-solid fa-right-from-bracket"></i></button></a>
+      </div>
+    </div>
+    <div class="col-lg-8 col-sm-6 mt-3">
+      <h2>{{game.title}}</h2>
+      <h4 class="text-white-50">about {{game.title}} :</h4>
+      <p>{{game.description | cutNum :400}}</p>
+      <div *ngIf="obj">
+        <h2 class="text-info fw-bolder">Minimum System Requirements :</h2>
+        <div *ngFor="let i of obj | keyvalue"><span class="fw-bolder text-primary">{{i.key}} :</span> <span>
+            {{i.value}}</span></div>
+      </div>
+      <h3 class="mt-2">Lost Ark Screenshots :</h3>
+      <div>
+        <owl-carousel-o [options]="customOptions">
+
+          <ng-container *ngFor="let img of game.screenshots">
+            <ng-template carouselSlide>
+              <img [src]="img.image" class='w-100'>
+            </ng-template>
+          </ng-container>
+
+        </owl-carousel-o>
+      </div>
+      <h2 class="text-center text-info mt-1">Additional Information :</h2>
+      <div class="row mb-5">
+        <div class="col-6">
+          <h5>title</h5>
+          <p class="text-white-50">{{game.title}}</p>
+        </div>
+        <div class="col-6">
+          <h5>Developer</h5>
+          <p class="text-white-50">{{game.developer}}</p>
+        </div>
+        <div class="col-6">
+          <h5>Publisher</h5>
+          <p class="text-white-50">{{game.publisher}}</p>
+        </div>
+        <div class="col-6">
+          <h5>Release Date</h5>
+          <p class="text-white-50">{{game.release_date}}</p>
+        </div>
+        <div class="col-6">
+          <h5>Genre</h5>
+          <p class="text-white-50">{{game.genre}}</p>
+        </div>
+        <div class="col-6">
+          <h5>platform</h5>
+          <p class="text-white-50"><i [class]="game.platform=='Windows'?'fa-windows':'fa-edge-legacy'"
+              class="fa-brands text-secondary fs-1"></i> {{game.platform}}</p>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,66 @@
+<div class="spn" *ngIf="!gamesArr">
+    <div class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div *ngIf="gamesArr">
+    <header>
+        <div class="layOut opacity-100 text-center">
+            <div>
+                <h2>Find & track the best free-to-play games!</h2>
+                <p class="text-white-50 sl">Track what you've played and search for what to play next! Plus get free
+                    premium
+                    loot!</p>
+                <button class="btn btn-outline-light py-3 px-2 mx-auto d-block w-25 fw-bolder" routerLink='/all'>browse
+                    game</button>
+            </div>
+        </div>
+    </header>
+    <div class="mt-4">
+        <owl-carousel-o [options]="customOptions">
+
+            <ng-container *ngFor="let img of gamesArr">
+                <ng-template carouselSlide>
+                    <div class="position-relative">
+                        <img [src]="img.thumbnail" class='rounded w-100' [routerLink]="['/details' , img.id]">
+                        <i class="fa-solid fa-star" *ngIf="favList.includes(img.id)"></i>
+                    </div>
+                </ng-template>
+            </ng-container>
+
+        </owl-carousel-o>
+    </div>
+    <div>
+        <h2 class="ms-5 text-white-50 py-3"><i class="fa-solid fa-robot"></i> Personalized Recommendations</h2>
+        <div class="w-95 ">
+            <div class="row gy-4">
+                <div class="col-md-4 col-sm-6 mx-auto" *ngFor="let item of gamesArr | slice:10:13">
+                    <div class="card-content bg-dark rounded-bottom" [routerLink]="['/details' , item.id]">
+                        <div class="overflow-hidden position-relative ">
+                            <img class="w-100" [src]="item.thumbnail" alt="">
+                            <div class="layOut">
+                                <p>Avilable on <span
+                                        [class]="item.platform=='PC (Windows)'?'text-info':'text-danger'">{{item.platform}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="content p-3">
+                            <span class="d-inline-block px-2 bg-primary float-end rounded fw-bolder">free</span>
+                            <h2 class="s1">{{item.title}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fix"></div>
+</div>

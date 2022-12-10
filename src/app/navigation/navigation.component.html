@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar fw-bolder border-bottom border-dark border-1 border-opacity-50 fixed-top">
+    <div class="container">
+      <div class="d-flex align-items-center"><a  routerLinkActive="active" routerLink="home" class="logo nav-logo"></a></div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" *ngIf="checkLogin"  routerLinkActive="active" routerLink="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="checkLogin"  routerLinkActive="active" routerLink='all'>All</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="checkLogin"  routerLinkActive="activeBest" routerLink='favourite'>Favourite</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="checkLogin">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              platforms
+            </a>
+            <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item"  routerLinkActive="active" routerLink="platforms/pc">ps</a></li>
+              <li><a class="dropdown-item"  routerLinkActive="active" routerLink="platforms/browser">browser</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown" *ngIf="checkLogin">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              sort-by
+            </a>
+            <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item"  routerLinkActive="active" routerLink="sort-by/release-date">release-date</a></li>
+              <li><a class="dropdown-item"  routerLinkActive="active" routerLink="sort-by/popularity">popularity</a></li>
+              <li><a class="dropdown-item"  routerLinkActive="active" routerLink="sort-by/alphabetical">alphabetical</a></li>
+              <li><a class="dropdown-item"  routerLinkActive="active" routerLink="sort-by/relevance">relevance</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown" *ngIf="checkLogin">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/racing">racing</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/sports">sports</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/social">social</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/shooter">shooter</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/open-world">open-world</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/zombie">zombie</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/fantasy">fantasy</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/action-rpg">action-rpg</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/action">action</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/flight">flight</a></li>
+                    <li><a class="dropdown-item"  routerLinkActive="active" routerLink="categories/battle-royale">battle-royale</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="me-3 nav-item dropdown">
+                <a class="btn btn-outline-info my-2" *ngIf="!checkLogin"  routerLinkActive="active" routerLink="signIn">login</a>
+            </li>
+            <li class="me-3 nav-item dropdown">
+                <a class="btn btn-outline-info my-2" *ngIf="!checkLogin"  routerLinkActive="active" routerLink="signUp">regrster</a>
+            </li>
+            <li class="me-3 nav-item dropdown">
+                <a class="btn btn-outline-info my-2" *ngIf="checkLogin"  routerLinkActive="active" routerLink="signIn" (click)="logOut()" >logout</a>
+            </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+<div class="fixx"></div>

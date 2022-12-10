@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat+Alternates&family=Mouse+Memoirs&family=Nerko+One&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Square+Peg&display=swap');
+
+
+html, body { height: 100%;}
+body { margin: 0; font-family: 'Josefin Sans', sans-serif; letter-spacing: 1.5px; line-height: 25px;}
+
+p{
+  line-height: 1.7rem;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+}
+
+$mainBg:linear-gradient( to right ,rgb(55, 102, 143),rgb(24, 56, 82), rgb(8, 35, 56),rgb(4, 17, 27) );
+
+body{
+  background-image: linear-gradient( to right ,rgb(4, 17, 27) , rgb(8, 35, 56),rgb(24, 56, 82),rgb(55, 102, 143));
+  color: #fff ;
+}
+
+.bg-mine{
+    background-color: #000 !important;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bg-game{
+    background-image: url(assets/imges/biggest-games.jpg);
+    background-position:center;
+    background-size: cover;
+}
+
+.bgc{
+    background-image: linear-gradient( 135deg ,rgb(4, 17, 27) 30%, rgb(8, 35, 56),rgb(24, 56, 82),rgb(55, 102, 143));
+}
+
+.logo{
+    width: 120px;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    border-radius: 20%;
+    margin: 10px 0;
+}
+
+.content{background-color: #3131;}
+
+
+.card-content img{
+  transition:transform .6s ease-in-out;
+}
+
+.card-content {
+  overflow: hidden;
+  font-size: 20px;
+  .image{  cursor: pointer;}
+  border: 1px solid #fff;
+  border-bottom: 5px solid #fff;
+  border-right: 3px solid #fff;
+  box-shadow: 5px 5px 10px #eee;
+  transition: transform .6s ease-in-out;
+}
+
+
+.layOut{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card-content:hover{
+  box-shadow: 5px 5px 20px #eee;
+  transform: scale(1.1);
+  .fa-star{transform: scale(1.2);}
+  img{
+    transform: scale(1.2);
+  }
+  .layOut{opacity: 1;}
+  .fa-windows{
+      color: #09c !important;
+      transform: scale(1.4);
+  }
+  .fa-edge-legacy{
+      color: red !important;
+      transform: scale(1.2);
+  }
+}
+
+.sl{
+  font-size: 22px;
+  font-weight: 500;
+}
+.sl2{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+
+.active{
+  background-image: $mainBg;
+}
+
+.genre{font-size: 16px;}
+
+.spn{
+
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 99;
+  background-image: $mainBg;
+}
+
+.fa-star{
+  font-size: 40px;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  z-index: 90;
+  color: #FFDE2E;
+}
+
+
+.w-95{width: 85%;margin-left: auto;margin-right: auto;}
+
+
+
+
+

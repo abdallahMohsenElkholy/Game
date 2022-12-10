@@ -1,0 +1,47 @@
+<div class="spn" *ngIf="!gamesArr">
+  <div class="spinner-grow text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-grow text-info" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div class="w-95  mt-5">
+  <div class="row gy-4" *ngIf="gamesArr">
+    <div class="col-md-4 col-lg-3 col-sm-6" *ngFor="let item of gamesArr | slice:0:cardNum">
+      <div class="card-content rounded-bottom position-relative">
+        <i class="fa-solid fa-star" *ngIf="favList.includes(item.id)"></i>
+        <div class="image overflow-hidden position-relative "   [routerLink]="['/details' , item.id]">
+          <img class="w-100" [src]="item.thumbnail" alt="">
+          <div class="layOut text-center">
+            <p>Avilable on<span
+                [class]="item.platform=='PC (Windows)'?'text-info':'text-danger'">{{item.platform}}</span></p>
+          </div>
+        </div>
+        <div class="content p-3">
+          <span class="d-inline-block px-1 bg-primary float-end bg-opacity-50 fw-bolder">free</span>
+          <h2 class="d-none sl d-md-block">{{item.title | cutNum:10}}</h2>
+          <h3 class="d-none sl2 d-md-block">{{item.short_description | cutNum:28}}</h3>
+          <h2 class="d-block sl d-md-none">{{item.title}}</h2>
+          <h3 class="d-block sl2 d-md-none">{{item.short_description | cutNum:55}}</h3>
+          <div class="d-flex justify-content-between">
+            <div>
+              <button class="btn " [class]="favList.includes(item.id)?'btn-secondary':'btn-primary'" (click)="addToFav(item.id)"><i [class]="favList.includes(item.id)?'fa-minus':'fa-plus'" class=" fa-solid "></i></button>
+            </div>
+            <div>
+              <span class="genre d-inline-block bg-danger px-2 py-1 rounded me-5  me-md-3">{{item.genre}}</span>
+              <i [class]="item.platform=='PC (Windows)'?'fa-windows':'fa-edge-legacy'"class="fa-brands text-secondary fs-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="add()" *ngIf="gamesArr.length>cardNum" class="btn btn-outline-light fw-bolder mx-auto w-50 my-4">More Games  <i class="fa-solid fa-sort-down"></i></button>
+  </div>
+</div>

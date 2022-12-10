@@ -1,0 +1,89 @@
+<div class=" pt-lg-5">
+    <div class="row mb-5">
+        <div class="col-lg-6 bg-game"></div>
+        <div class="col-lg-6 bgc">
+            <form [formGroup]="regesterForm" (ngSubmit)="getRegesteration(regesterForm)">
+                <div class="bg row p-5">
+                    <h2 class="text-light text-center mb-5">Create an Account!...</h2>
+                    <div class="col-md-6">
+                        <input formControlName="first_name" type="text"
+                            class="form-control text-white-50 rounded-0 bg-mine mt-2  border-0"
+                            placeholder="first-name">
+                        <div *ngIf="regesterForm.get('first_name') && regesterForm.get('first_name')?.touched">
+                            <p class="text-danger" *ngIf="regesterForm.get('first_name')?.getError('required')">
+                                first_name is
+                                required</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('first_name')?.getError('pattern')">enter a
+                                valid
+                                name</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('first_name')?.getError('minlength')">
+                                minlength is 4
+                                char..</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('first_name')?.getError('maxlength')">
+                                maxlength is 12
+                                char..</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input formControlName="last_name" type="text"
+                            class="form-control text-white-50 rounded-0 bg-mine mt-2  border-0" placeholder="last_name">
+                        <div *ngIf="regesterForm.get('last_name') && regesterForm.get('last_name')?.touched">
+                            <p class="text-danger" *ngIf="regesterForm.get('last_name')?.getError('required')">last_name
+                                is
+                                required</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('last_name')?.getError('pattern')">enter a
+                                valid name
+                            </p>
+                            <p class="text-danger" *ngIf="regesterForm.get('last_name')?.getError('minlength')">
+                                minlength is 4
+                                char..</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('last_name')?.getError('maxlength')">
+                                maxlength is 12
+                                char..</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input formControlName="email" type="email"
+                            class="form-control text-white-50 rounded-0 bg-mine mt-2  border-0" placeholder="email">
+                        <div *ngIf="regesterForm.get('email')?.touched">
+                            <p class="text-danger" *ngIf="errMsg">{{errMsg}}</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('email')?.getError('required')">email is
+                                required</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('email')?.getError('email')">
+                                EX:email@example.ex</p>
+                        </div>
+                    </div>
+                    <div>
+                        <input formControlName="password" type="password"
+                            class="form-control text-white-50 rounded-0 bg-mine mt-2  border-0" placeholder="password">
+                        <div *ngIf="regesterForm.get('password')?.touched">
+                            <p class="text-danger" *ngIf="regesterForm.get('password')?.getError('required')">password
+                                is
+                                required</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('password')?.getError('pattern')">char & num
+                                only
+                                within 4</p>
+                        </div>
+                    </div>
+                    <div>
+                        <input formControlName="age" type="text"
+                            class="form-control text-white-50 rounded-0 bg-mine mt-2 border-0" placeholder="age">
+                        <div *ngIf=" regesterForm.get('age')?.touched">
+                            <p class="text-danger" *ngIf="regesterForm.get('age')?.getError('required')">age is required
+                            </p>
+                            <p class="text-danger" *ngIf="regesterForm.get('age')?.getError('min')">min age is 18
+                                years..</p>
+                            <p class="text-danger" *ngIf="regesterForm.get('age')?.getError('max')">max age is 60
+                                years..</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" [disabled]="regesterForm.invalid"
+                            class="text-white-50 my-2 w-100 btn btn-outline-success">Create Account</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

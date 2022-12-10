@@ -1,0 +1,27 @@
+header{
+    position: relative;
+    height: 45vh;
+    background-image: url(../../assets/imges/biggest-games.jpg);
+    background-position:10% 10%;
+    background-size: cover;
+    border-bottom: 1px solid white;
+}
+
+.fix{
+    background-color: transparent;
+    height: 50px;
+}
+
+a{text-decoration: none;}
+
+.card-content{
+    &:hover{
+        box-shadow: -10px -20px 20px #09c;
+    }
+    border: 2px solid black;
+    transition: .6s;
+}
+
+.w-100{
+    cursor: pointer;
+}

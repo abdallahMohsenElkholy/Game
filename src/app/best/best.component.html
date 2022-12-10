@@ -1,0 +1,60 @@
+<div class="spn" *ngIf="!gamesArr">
+    <div class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div class="container-fluid" *ngIf="gamesArr.length==0">
+    <h2 class="text-center text-danger pt-5 fw-bolder">Sorry <span class="text-info">{{userName}}</span> !! your favourite list still empty</h2>
+    <button class="btn btn-outline-light py-3 px-2 mx-auto d-block w-50 fw-bolder" routerLink='/all'>Fill it now <i
+            class="fa-solid fa-forward"></i></button>
+</div>
+<div class="w-95 mt-5">
+    <div class="row gy-4" *ngIf="gamesArr.length>0">
+        <h2 class="text-center text-success py-5">Hey '<span class="text-info">{{userName}}</span>' !! enjoy your favourite game list </h2>
+        <div class="col-md-4 col-lg-3 col-sm-6" *ngFor="let item of gamesArr | slice:0:cardNum">
+            <div class="card-content rounded-bottom position-relative">
+                <i class="fa-solid fa-star"></i>
+                <div class="image overflow-hidden position-relative " [routerLink]="['/details' , item.id]">
+                    <img class="w-100" [src]="item.thumbnail" alt="">
+                    <div class="layOut text-center">
+                        <p>Avilable on<span
+                                [class]="item.platform=='PC (Windows)'?'text-info':'text-danger'">{{item.platform}}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="content p-3">
+                    <span class="d-inline-block px-1 bg-primary float-end bg-opacity-50 fw-bolder">free</span>
+                    <h2 class="d-none sl d-md-block">{{item.title | cutNum:10}}</h2>
+                    <h3 class="d-none sl2 d-md-block">{{item.short_description | cutNum:28}}</h3>
+                    <h2 class="d-block sl d-md-none">{{item.title}}</h2>
+                    <h3 class="d-block sl2 d-md-none">{{item.short_description | cutNum:55}}</h3>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button class="btn " [class]="favList.includes(item.id)?'btn-secondary':'btn-primary'"
+                                (click)="remove(item.id)"><i [class]="favList.includes(item.id)?'fa-minus':'fa-plus'"
+                                    class=" fa-solid "></i></button>
+                        </div>
+                        <div>
+                            <span
+                                class="genre d-inline-block bg-danger px-2 py-1 rounded me-5  me-md-3">{{item.genre}}</span>
+                            <i [class]="item.platform=='PC (Windows)'?'fa-windows':'fa-edge-legacy'"
+                                class="fa-brands text-secondary fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button (click)="add()" *ngIf="gamesArr.length>cardNum"
+            class="btn btn-outline-light fw-bolder mx-auto w-50 my-4">More Games <i
+                class="fa-solid fa-sort-down"></i></button>
+    </div>
+</div>
