@@ -39,14 +39,21 @@ export class GameDetailsComponent implements OnInit {
     nav: true
   }
 game:any
-constructor(private _ActivatedRoute:ActivatedRoute ,private _GamesApiService:GamesApiService , private _AuthService:AuthService ,private _FavouriteService:FavouriteService) { }
+constructor(
+   private _ActivatedRoute:ActivatedRoute ,
+   private _GamesApiService:GamesApiService , 
+   private _AuthService:AuthService ,
+   private _FavouriteService:FavouriteService
+   ) { }
 
 ngOnInit(): void {
   this.favList=Array.from(this._FavouriteService.userFav())
   console.log(this.favList);
   
   this._GamesApiService.getGameDetails(this._ActivatedRoute.snapshot.params['id']).subscribe({
-    next:res=>{this.game=res;this.obj= new Map(Object.entries(this.game.minimum_system_requirements))
+    next:res=>{
+      this.game=res;
+      this.obj= new Map(Object.entries(this.game.minimum_system_requirements))
       if( this.favList.includes(this.game.id)){
         this.keyValue="Remove from Fav"
       }else{this.keyValue="Add to Fav"}
